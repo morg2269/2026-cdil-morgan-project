@@ -1,1 +1,27 @@
 {%- if site.data.theme.featured-image -%}{% unless site.data.theme.featured-image contains '/' %}{% assign featuredItem = site.data[site.metadata] | where: 'objectid', site.data.theme.featured-image | first %}{% unless featuredItem.youtubeid %}{% if featuredItem.filename contains '/' %}{{ featuredItem.filename}}{% else %}{{ featuredItem.filename | prepend: '/objects/' | relative_url }}{% endif %}{% else %}https://img.youtube.com/vi/{{ featuredItem.youtubeid }}/maxresdefault.jpg{% endunless %}{% else %}{{ site.data.theme.featured-image | relative_url }}{% endunless %}{% else %}{{ '/assets/img/collectionbuilder-logo.png' | relative_url }}{%- endif -%}
+{%- comment -%}
+  Return a URL for the featured image. The theme config `site.data.theme.featured-image`
+  can either be a path (contains '/') or an objectid that matches an item in the
+  metadata data file (site.data[site.metadata]). If nothing found, fall back to a default.
+{%- endcomment -%}
+
+{%- if site.data.theme.featured-image -%}
+  {%- assign fi = site.data.theme.featured-image -%}
+
+  {%- if fi contains '/' -%}
+    {{ fi | relative_url }}
+  {%- else -%}
+    {%- assign collection = site.data[site.metadata] -%}
+    {%- if collection -%}
+      {%- assign featuredItem = collection | where: "objectid", fi | first -%}
+    {%- endif -%}
+
+    {%- if featuredItem and featuredItem.image -%}
+      {{ featuredItem.image | relative_url }}
+    {%- else -%}
+      {{ "/assets/images/default-featured.png" | relative_url }}
+    {%- endif -%}
+  {%- endif -%}
+{%- else -%}
+  {{ "/assets/images/default-featured.png" | relative_url }}
+{%- endif -%}
