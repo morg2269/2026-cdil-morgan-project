@@ -9,10 +9,10 @@
 #
 # url is site domain, full URL to the production location of your collection
 # on GitHub Pages follows the pattern username.github.io
-url: "https://morg2269.github.io"
+url: https://morg2269.github.io
 # baseurl is path to location on the domain if necessary e.g. /digital/hjccc
 # on GitHub Pages it is your github repository's name prefixed with a /
-baseurl: "/2026-cdil-morgan-project"
+baseurl: /2026-cdil-morgan-project
 # location of code, the full url to your github repository
 source-code: https://github.com/morg2269/2026-cdil-morgan-project
 
@@ -35,7 +35,7 @@ author: Madeleine Morgan
 #
 # Set the metadata for your collection (the name of the csv file in your _data directory that describes the objects in your collection) 
 # Use the filename of your CSV **without** the ".csv" extension! E.g. _data/demo-metadata.csv --> "demo-metadata"
-metadata: "vandal-metadata"
+metadata: vandal-metadata
 
 ##########
 # Site/Organization Branding 
